@@ -75,7 +75,7 @@ a {
   justify-content: space-between;
   align-items: center;
   padding: 10px 30px;
-  background: var(--accent);
+  background: var(--navbar-bg, var(--accent));
   box-shadow: var(--soft-shadow);
   position: fixed;
   width: 100%;
