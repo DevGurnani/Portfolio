@@ -48,6 +48,47 @@ a {
   color: inherit;
 }
 
+/* Custom Cursor */
+.cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  display: none;
+}
+
+.cursor-trail {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: #ffffff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  display: none;
+}
+
+/* Show cursor only on desktop */
+@media (min-width: 769px) {
+  .cursor,
+  .cursor-trail {
+    display: block;
+  }
+
+  body {
+    cursor: none;
+  }
+
+  a, button, .portfolio-item, .filter-btn, .theme-toggle, #backgroundSwitcher {
+    cursor: none;
+  }
+}
+
 /* Background video */
 #bg-video {
   position: fixed;
