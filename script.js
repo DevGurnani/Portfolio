@@ -13,25 +13,36 @@ AOS.init({
       this.currentTheme = localStorage.getItem('theme') || 'dark';
       this.init();
     }
-  
+
     init() {
       document.documentElement.setAttribute('data-theme', this.currentTheme);
       const themeToggle = document.getElementById('themeToggle');
       if (themeToggle) {
+        this.updateIcon();
         themeToggle.addEventListener('click', () => this.toggleTheme());
       }
     }
-  
+
     toggleTheme() {
       this.currentTheme = this.currentTheme === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', this.currentTheme);
       localStorage.setItem('theme', this.currentTheme);
-      
+      this.updateIcon();
+
       // Animate theme transition
       gsap.to('body', {
         duration: 0.3,
         ease: 'power2.inOut'
       });
+    }
+
+    updateIcon() {
+      const themeToggle = document.getElementById('themeToggle');
+      if (themeToggle) {
+        // Dark mode: show sun icon (click switches to light)
+        // Light mode: show moon icon (click switches to dark)
+        themeToggle.innerHTML = this.currentTheme === 'dark' ? '☀' : '🌙';
+      }
     }
   }
   
