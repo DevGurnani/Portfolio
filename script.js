@@ -452,31 +452,23 @@ AOS.init({
   document.addEventListener('DOMContentLoaded', () => {
     // Initialize all components
     new ThemeManager();
+    new BackgroundManager();
     new CustomCursor();
     new SkillsAnimation();
     new PortfolioFilter();
-    
+
     // Initialize typing animation
     const typingElement = document.getElementById('typingText');
     if (typingElement) {
       new TypingAnimation(typingElement, [
         'Android Developer',
-        'Kotlin Enthusiast', 
+        'Kotlin Enthusiast',
         'Java Expert',
         'Mobile App Creator',
         'Code Architect'
       ]);
     }
-    
-    // Initialize matrix rain
-    const matrixCanvas = document.getElementById('matrix-canvas');
-    if (matrixCanvas) {
-      new MatrixRain(matrixCanvas);
-    }
-    
-    // Initialize particles
-    initParticles();
-    
+
     // Initialize GSAP animations
     initGSAPAnimations();
     
