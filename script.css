@@ -597,4 +597,38 @@ footer {
     flex-direction: row;
     gap: 20px;
   }
+
+  /* Mobile Skills Grid */
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .skill-circle {
+    width: 130px;
+    height: 130px;
+  }
+
+  .skill-content {
+    width: 100px;
+    height: 100px;
+  }
+
+  .skill-name {
+    font-size: 0.8rem;
+  }
+
+  .skill-percentage {
+    font-size: 1.2rem;
+  }
+
+  /* Mobile Filter Buttons */
+  .portfolio-filters {
+    gap: 10px;
+  }
+
+  .filter-btn {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+  }
 }
