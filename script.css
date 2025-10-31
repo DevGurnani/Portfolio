@@ -262,6 +262,19 @@ a {
   margin-bottom: 40px;
 }
 
+/* Typing Cursor Animation */
+.typing-cursor {
+  display: inline-block;
+  margin-left: 5px;
+  animation: blink 1s infinite;
+  font-weight: 400;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
 /* Buttons */
 .btn {
   display: inline-block;
