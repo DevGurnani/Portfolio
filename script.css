@@ -457,6 +457,46 @@ a {
   margin-bottom: 50px;
   color: var(--accent);
 }
+
+/* Portfolio Filter Buttons */
+.portfolio-filters {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 10px 25px;
+  background: var(--card-bg, var(--section-bg));
+  color: var(--text-color);
+  border: 2px solid var(--secondary-accent);
+  border-radius: 25px;
+  font-size: 1rem;
+  font-family: 'Sawarabi Gothic', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.filter-btn:hover {
+  background: var(--secondary-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  color: var(--background, #fff);
+  border-color: var(--accent);
+}
+
+/* Hidden portfolio items */
+.portfolio-item.hidden {
+  display: none;
+}
+
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
