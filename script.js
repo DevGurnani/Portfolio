@@ -45,7 +45,88 @@ AOS.init({
       }
     }
   }
-  
+
+  /* Background Management */
+  class BackgroundManager {
+    constructor() {
+      this.currentBackground = localStorage.getItem('background') || 'video';
+      this.videoElement = document.getElementById('bg-video');
+      this.videoOverlay = document.querySelector('.video-overlay');
+      this.matrixCanvas = document.getElementById('matrix-canvas');
+      this.particlesDiv = document.getElementById('particles-js');
+      this.matrixRain = null;
+      this.particlesInitialized = false;
+      this.init();
+    }
+
+    init() {
+      // Set initial background
+      this.switchBackground(this.currentBackground);
+
+      // Add event listener to background switcher
+      const backgroundSwitcher = document.getElementById('backgroundSwitcher');
+      if (backgroundSwitcher) {
+        backgroundSwitcher.value = this.currentBackground;
+        backgroundSwitcher.addEventListener('change', (e) => {
+          this.switchBackground(e.target.value);
+        });
+      }
+    }
+
+    switchBackground(type) {
+      // Hide all backgrounds
+      if (this.videoElement) {
+        this.videoElement.classList.remove('active');
+      }
+      if (this.videoOverlay) {
+        this.videoOverlay.classList.remove('active');
+      }
+      if (this.matrixCanvas) {
+        this.matrixCanvas.classList.remove('active');
+      }
+      if (this.particlesDiv) {
+        this.particlesDiv.classList.remove('active');
+      }
+
+      // Show selected background
+      if (type === 'video') {
+        if (this.videoElement) {
+          this.videoElement.classList.add('active');
+        }
+        if (this.videoOverlay) {
+          this.videoOverlay.classList.add('active');
+        }
+      } else if (type === 'matrix') {
+        if (this.matrixCanvas) {
+          this.matrixCanvas.classList.add('active');
+          // Initialize MatrixRain if not already initialized
+          if (!this.matrixRain) {
+            this.matrixRain = new MatrixRain(this.matrixCanvas);
+          }
+        }
+      } else if (type === 'particles') {
+        if (this.particlesDiv) {
+          this.particlesDiv.classList.add('active');
+          // Initialize particles if not already initialized
+          if (!this.particlesInitialized) {
+            initParticles();
+            this.particlesInitialized = true;
+          }
+        }
+      }
+
+      // Save preference
+      this.currentBackground = type;
+      localStorage.setItem('background', type);
+
+      // Update dropdown value
+      const backgroundSwitcher = document.getElementById('backgroundSwitcher');
+      if (backgroundSwitcher) {
+        backgroundSwitcher.value = type;
+      }
+    }
+  }
+
   /* Custom Cursor */
   class CustomCursor {
     constructor() {
